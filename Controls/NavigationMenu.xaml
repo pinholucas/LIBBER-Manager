@@ -1,0 +1,80 @@
+﻿<UserControl
+    x:Class="Libber_Manager.Controls.NavigationMenu"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Libber_Manager.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="800"
+    d:DesignWidth="300" Width="Auto">
+
+    <Grid x:Name="navGrid" Background="#2f3243">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <RelativePanel Grid.Column="0" MinWidth="40" x:Name="MainGrid2" SizeChanged="Page_SizeChanged" Grid.RowSpan="4"/>
+        <RelativePanel Grid.Column="0" Width="{Binding ElementName=MainGrid2,Path=Width}" Background="#BF2F3243" Grid.RowSpan="4"/>
+
+        <AppBarButton x:Name="btn_Menu" HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="Auto" Style="{StaticResource navMenu_ButtonStyle}" FontSize="16" FontFamily="Nirmala UI Semilight" Foreground="#FFA0A0A0" BorderBrush="#FF212331" BorderThickness="0" IsTabStop="False" Click="btn_Menu_Click" ToolTipService.ToolTip="Mostrar/ocultar detalhes do menu">
+            <AppBarButton.Icon>
+                <FontIcon Glyph="&#xE700;"/>
+            </AppBarButton.Icon>
+        </AppBarButton>
+
+        <Grid x:Name="mainMenuTools" Grid.Row="1" BorderThickness="0,0,0,1" BorderBrush="#FF212331">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="12,5,0,0" TextWrapping="Wrap" Text="FERRAMENTAS" VerticalAlignment="Top" Foreground="#FFA0A0A0" FontFamily="Nirmala UI" FontSize="12"/>
+            <AppBarButton x:Name="btn_NewDB" HorizontalAlignment="Stretch" Label="NOVA DATABASE" VerticalAlignment="Stretch" Width="Auto" Style="{StaticResource navMenu_ButtonStyle}" FontSize="16" FontFamily="Nirmala UI Semilight" Foreground="#FFA0A0A0" Grid.Row="1" BorderBrush="#FF212331" BorderThickness="0,1,0,0" IsTabStop="False" ToolTipService.ToolTip="Cria uma nova database" Click="btn_NewDB_Click" Height="50">
+                <AppBarButton.Icon>
+                    <SymbolIcon Symbol="Preview"/>                    
+                </AppBarButton.Icon>
+            </AppBarButton>
+            <AppBarButton x:Name="btn_OpenDB" HorizontalAlignment="Stretch" Label="ABRIR" VerticalAlignment="Stretch" Width="Auto" Style="{StaticResource navMenu_ButtonStyle}" FontSize="11" FontFamily="Nirmala UI Semilight" Foreground="#FFA0A0A0" Grid.Row="2" BorderBrush="#FF212331" BorderThickness="0" Padding="0" Margin="0" UseSystemFocusVisuals="True" IsTabStop="False" Click="btn_OpenDB_Click" ToolTipService.ToolTip="Abre uma database existente" Icon="OpenFile"/>
+            <AppBarButton x:Name="btn_SaveDB" HorizontalAlignment="Stretch" Icon="Save" Label="SALVAR" VerticalAlignment="Stretch" Width="Auto" Style="{StaticResource navMenu_ButtonStyle}" FontSize="16" FontFamily="Nirmala UI Semilight" Foreground="#FFA0A0A0" Grid.Row="3" IsTabStop="False" BorderBrush="#FF212331" BorderThickness="0" ToolTipService.ToolTip="Salva a database" Click="btn_SaveDB_Click" Visibility="Collapsed"/>
+            <AppBarButton x:Name="btn_SaveAsDB" HorizontalAlignment="Stretch" Icon="SaveLocal" Label="SALVAR COMO" VerticalAlignment="Stretch" Width="Auto" Style="{StaticResource navMenu_ButtonStyle}" FontSize="16" FontFamily="Nirmala UI Semilight" Foreground="#FFA0A0A0" Grid.Row="4" IsTabStop="False" BorderBrush="#FF212331" BorderThickness="0" ToolTipService.ToolTip="Salva a database em um local específico" Click="btn_SaveAsDB_Click" Height="50" Visibility="Collapsed"/>
+        </Grid>
+
+        <Grid x:Name="otherMenuTools" x:FieldModifier="public" Grid.Row="2" BorderThickness="0,0,0,1" BorderBrush="#FF212331" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="12,28,0,0" TextWrapping="Wrap" Text="EDIÇÃO" VerticalAlignment="Top" Foreground="#FFA0A0A0" FontFamily="Nirmala UI" FontSize="12"/>
+            <AppBarButton x:Name="btn_Ads" HorizontalAlignment="Stretch" Icon="PostUpdate" Label="ANÚNCIOS" VerticalAlignment="Stretch" Width="Auto" Style="{StaticResource navMenu_ButtonStyle}" FontSize="16" FontFamily="Nirmala UI Semilight" Foreground="#FFA0A0A0" Grid.Row="1" Click="btn_Ads_Click" BorderBrush="#FF212331" BorderThickness="0,1,0,0" Margin="0,-1,0,0" IsTabStop="False" ToolTipService.ToolTip="Edição dos anúncios"/>
+            <AppBarButton x:Name="btn_Categories" HorizontalAlignment="Stretch" Icon="ShowBcc" Label="CATEGORIAS" VerticalAlignment="Stretch" Width="Auto" Style="{StaticResource navMenu_ButtonStyle}" FontSize="16" FontFamily="Nirmala UI Semilight" Foreground="#FFA0A0A0" Grid.Row="2" Click="btn_Categories_Click" IsTabStop="False" ToolTipService.ToolTip="Edição dos locais"/>
+            <AppBarButton x:Name="btn_Intineraries" HorizontalAlignment="Stretch" Icon="World" Label="ROTEIROS" VerticalAlignment="Stretch" Width="Auto" Style="{StaticResource navMenu_ButtonStyle}" FontSize="16" FontFamily="Nirmala UI Semilight" Foreground="#FFA0A0A0" Grid.Row="3" Click="btn_Intineraries_Click" IsTabStop="False" ToolTipService.ToolTip="Edição dos roteiros"/>
+            <AppBarButton x:Name="btn_Vehicles" HorizontalAlignment="Stretch" Label="VEÍCULOS" VerticalAlignment="Stretch" Width="Auto" Style="{StaticResource navMenu_ButtonStyle}" FontSize="16" FontFamily="Nirmala UI Semilight" Foreground="#FFA0A0A0" Grid.Row="4" IsTabStop="False" ToolTipService.ToolTip="Edição dos roteiros" Click="btn_Vehicles_Click">
+                <AppBarButton.Icon>
+                    <FontIcon Glyph="&#xE804;"/>
+                </AppBarButton.Icon>
+            </AppBarButton>
+            <AppBarButton x:Name="btn_FAQs" HorizontalAlignment="Stretch" Icon="Help" Label="FAQ's" VerticalAlignment="Stretch" Width="Auto" Style="{StaticResource navMenu_ButtonStyle}" FontSize="16" FontFamily="Nirmala UI Semilight" Foreground="#FFA0A0A0" Grid.Row="5" Click="btn_FAQs_Click" IsTabStop="False" ToolTipService.ToolTip="Edição dos FAQ's"/>
+            <AppBarButton x:Name="btn_Emergency" HorizontalAlignment="Stretch" Icon="ReportHacked" Label="EMERGÊNCIA" VerticalAlignment="Stretch" Width="Auto" Style="{StaticResource navMenu_ButtonStyle}" FontSize="16" FontFamily="Nirmala UI Semilight" Foreground="#FFA0A0A0" Grid.Row="6" Click="btn_Emergency_Click" BorderBrush="#FF212331" BorderThickness="0" IsTabStop="False" ToolTipService.ToolTip="Edição dos dados de emergência" Height="50"/>
+        </Grid>
+
+        <AppBarButton x:Name="btn_About" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="Auto" Style="{StaticResource navMenu_ButtonStyle}" FontSize="16" FontFamily="Nirmala UI Semilight" Foreground="#FFA0A0A0" BorderBrush="#FF212331" BorderThickness="0" IsTabStop="False" ToolTipService.ToolTip="Sobre" Click="btn_About_Click" Grid.Row="3">
+            <AppBarButton.Icon>
+                <FontIcon Glyph="&#xE946;"/>
+            </AppBarButton.Icon>
+        </AppBarButton>
+
+    </Grid>
+
+</UserControl>

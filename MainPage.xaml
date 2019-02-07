@@ -1,0 +1,45 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Libber_Manager"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Controls="using:Libber_Manager.Controls" x:Name="mainpage"
+    x:Class="Libber_Manager.MainPage"
+    mc:Ignorable="d" RequestedTheme="Dark" Loaded="Page_Loaded" >
+
+    <Grid Background="#FF212331">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Controls:DialogMessage x:Name="_DialogMessage" Grid.ColumnSpan="2" Canvas.ZIndex="5" Visibility="Collapsed" Grid.Row="1"/>
+        <TextBlock x:Name="DebugTextBlock" Grid.Column="1" HorizontalAlignment="Left" Margin="858,14,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Visibility="Collapsed" Grid.Row="1"/>
+        <RelativePanel Grid.Column="0" Grid.ColumnSpan="2" MinWidth="40" x:Name="MainGrid2" SizeChanged="Page_SizeChanged" Visibility="Collapsed"/>
+        <RelativePanel Grid.Column="0" Width="{Binding ElementName=MainGrid2,Path=Width}" Background="#BF212331" Visibility="Collapsed"/>
+
+        <Grid Background="#FF2F3243" Grid.Row="0" x:Name="TitleBar" Visibility="Collapsed">
+            <Grid x:Name="MainTitleBar" Background="Transparent">
+                <TextBlock Text="UrzaGatherer" VerticalAlignment="Center" FontSize="12" FontFamily="Segoe UI" FontWeight="Normal" Margin="10,0" Foreground="#e6e6e6" HorizontalAlignment="Center"/>
+            </Grid>
+        </Grid>
+
+        <Grid x:Name="mainGrid" x:FieldModifier="public" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="c1" x:FieldModifier="public" Width="250"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <Controls:NavigationMenu x:Name="navigationMenu"/>
+
+            <Controls:Ads x:Name="_Ads" Grid.Column="1" Visibility="Collapsed" />
+            <Controls:Categories x:Name="_Places" Visibility="Collapsed" Grid.Column="1"/>
+            <Controls:Intineraries x:Name="_Intineraries" Height="Auto" Grid.Column="1" Visibility="Collapsed"/>
+            <Controls:Vehicles x:Name="_Vehicles" Height="Auto" Grid.Column="1" Visibility="Collapsed"/>
+            <Controls:FAQs x:Name="_FAQs" Visibility="Collapsed" Grid.Column="1"/>
+            <Controls:Emergency x:Name="_Emergency" Visibility="Collapsed" Grid.Column="1"/>
+        </Grid>
+
+    </Grid>
+</Page>
